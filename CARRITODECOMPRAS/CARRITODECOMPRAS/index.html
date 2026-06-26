@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Ventas con Registro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+<header>
+  <h1>🛒 Sistema de Ventas</h1>
+  <div>
+    <button id="carrito-btn" onclick="toggleCarrito()">
+      Carrito: <span id="contador">0</span>
+    </button>
+    <button id="btnLogin" onclick="abrirLogin()">
+  Iniciar Sesión
+</button>
+
+<button id="btnCerrar" onclick="cerrarSesion()">
+  Cerrar Sesión
+</button>
+
+<button id="historial" onclick="verHistorial()">
+  Historial
+</button>
+  </div>
+</header>
+
+<section class="hero">
+  <h2>TECNOLOGÍA Y GAMING</h2>
+  <p>Encuentra laptops, componentes y accesorios al mejor precio.</p>
+  <a href="#contenedor-productos" class="hero-btn">Ver Productos</a>
+</section>
+
+<section class="info-bar">
+  <p>🚚 Delivery en Lima | 💳 Pago Seguro | 🛠️ Soporte Técnico</p>
+</section>
+
+<section class="categorias">
+  <button onclick="filtrarCategoria('gaming')">🎮 Gaming</button>
+  <button onclick="filtrarCategoria('laptops')">💻 Laptops</button>
+  <button onclick="filtrarCategoria('accesorios')">⌨️ Accesorios</button>
+  <button onclick="filtrarCategoria('monitores')">🖥️ Monitores</button>
+  <button onclick="filtrarCategoria('audio')">🎧 Audio</button>
+  <button onclick="mostrarProductos(productos)">📦 Todos</button>
+</section>
+
+<section class="buscador">
+  <input type="text" id="buscar" placeholder="Buscar producto...">
+</section> 
+
+<h2 class="titulo-productos">
+  Catálogo de Productos
+</h2>
+
+<section class="productos" id="contenedor-productos"></section>
+
+<section class="carrito" id="panel-carrito">
+  <h2>CARRITO DE COMPRAS</h2>
+  <h3>Datos del Cliente</h3>
+  <input type="text" id="nombreCliente" placeholder="Nombre completo">
+  <input type="text" id="dniCliente" placeholder="DNI">
+  <input type="text" id="telefonoCliente" placeholder="Teléfono">
+  <input type="email" id="correoCliente" placeholder="Correo">
+
+  <select id="metodoPago">
+    
+      <option value="">Método de Pago</option>
+      <option>Efectivo</option>
+      <option>Yape</option>
+      <option>Plin</option>
+      <option>Tarjeta</option>
+  </select>
+<div id="qrYape" style="display:none; margin-top:10px;">
+    <img src="img/yape.jpg" width="250" height="200" alt="yape">
+</div>
+
+  <br><br>
+  <div id="lista-carrito"></div>
+
+  <div class="total">
+    TOTAL: S/<span id="total">0</span>
+  </div>
+
+  <button class="confirmar" onclick="confirmarCompra()">
+    Confirmar Compra
+  </button>
+</section>
+
+<section class="historial" id="historial">
+  <h2>Historial de Compras</h2>
+  <div id="listaHistorial"></div>  
+</section>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="cerrar" onclick="cerrarModal()">X</span>
+    <img id="modal-img">
+    <h2 id="modal-nombre"></h2>
+    <p id="modal-desc"></p>
+    <h3 id="modal-precio"></h3>
+  </div>
+</div>
+
+<div class="modal" id="modalLogin">
+  <div class="login-content" id="vista-login">
+    <span class="cerrar" onclick="cerrarModalLogin()">X</span>
+    <h2>🔐 Iniciar Sesión</h2>
+    <input type="email" id="loginCorreo" placeholder="Correo electrónico">
+    <input type="password" id="loginPassword" placeholder="Contraseña">
+    <button onclick="iniciarSesion()">Ingresar</button>
+    <p class="cambio-vista">¿No tienes cuenta? <span onclick="cambiarVista('registro')">Regístrate aquí</span></p>
+  </div>
+
+  <div class="login-content" id="vista-registro" style="display: none;">
+    <span class="cerrar" onclick="cerrarModalLogin()">X</span>
+    <h2>📝 Registro de Usuario</h2>
+    <input type="text" id="regNombre" placeholder="Nombre Completo">
+    <input type="email" id="regCorreo" placeholder="Correo electrónico">
+    <input type="password" id="regPassword" placeholder="Crea una Contraseña">
+    <button onclick="registrarUsuario()">Guardar Registro</button>
+    <p class="cambio-vista">¿Ya tienes cuenta? <span onclick="cambiarVista('login')">Inicia sesión</span></p>
+  </div>
+</div>
+
+<div id="mensaje">Producto agregado correctamente</div>
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <div>
+      <h3>TECH STORE</h3>
+      <p>📍 Lima, Perú</p>
+      <p>📧 contacto@techstore.com</p>
+      <p>📞 990 833 155</p>
+    </div>
+
+    <div>
+      <h3>Productos</h3>
+      <p>💻 Laptops</p>
+      <p>⌨️ Accesorios</p>
+      <p>🖥️ Monitores</p>
+      <p>🎮 Gaming</p>
+    </div>
+
+    <div>
+      <h3>Servicios</h3>
+      <p>🚚 Delivery</p>
+      <p>💳 Pago Seguro</p>
+      <p>🛠️ Soporte Técnico</p>
+    </div>
+
+  </div>
+ 
+
+  <div class="footer-copy">
+    © 2026 Tech Store - Todos los derechos reservados
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
